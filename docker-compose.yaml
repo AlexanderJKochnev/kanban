@@ -4,8 +4,8 @@ services:
     image: ${KANBOARD_IMAGE:-kanboard/kanboard:latest}
     container_name: kanboard
     restart: always
-    ports:
-     - "80:80"
+    expose:
+     - "80"
      # - "443:443"
     volumes:
      - data:/var/www/app/data
@@ -13,10 +13,16 @@ services:
      # - certs:/etc/nginx/ssl
     environment:
      - PLUGIN_INSTALLER=true # Swap to true to enable web based plugin installation
+    networks:
+      - shared_network
 volumes:
   data:
     driver: local
   plugins:
     driver: local
-  # certs:
-  #  driver: local
+
+networks:
+  shared_network:
+    driver: bridge
+    external: true
+    name: nginx_gateway_shared_network
