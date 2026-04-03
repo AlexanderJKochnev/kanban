@@ -4,7 +4,9 @@ services:
     image: ${KANBOARD_IMAGE:-kanboard/kanboard:latest}
     container_name: kanboard
     restart: always
-    user: "100:101"
+    environment:
+      - PUID=100
+      - PGID=101
     expose:
      - "80"
      # - "443:443"
