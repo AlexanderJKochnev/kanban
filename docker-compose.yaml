@@ -8,13 +8,13 @@ services:
      - "80"
      # - "443:443"
     volumes:
-     - /mnt/hdd_data/volumes/kanboard_data:/var/www/app/data
-     - /mnt/hdd_data/volumes/kanboard_plugins:/var/www/app/plugins
+     - ${BIND_VOLUMES}/kanboard_data:/var/www/app/data
+     - ${BIND_VOLUMES}/kanboard_plugins:/var/www/app/plugins
      # - certs:/etc/nginx/ssl
     environment:
      - PLUGIN_INSTALLER=false # Swap to true to enable web based plugin installation
-     - PUID=100
-     - PGID=101
+     # - PUID=100
+     # - PGID=101
     networks:
       - shared_network
 volumes:
