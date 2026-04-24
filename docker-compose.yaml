@@ -1,7 +1,8 @@
 name: kanboard
 services:
   app:
-    image: ${KANBOARD_IMAGE:-kanboard/kanboard:latest}
+    image: kanboard:local
+    # image: ${KANBOARD_IMAGE:-kanboard/kanboard:latest}
     container_name: kanboard
     restart: always
     expose:
